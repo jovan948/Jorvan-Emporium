@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Radiance Vault - Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    </head>
+    <body>
+        <div class="admin-container">
+            <div id="admin-login" class="admin-login-form">
+                <h2>Admin Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" required value="admin"> <!-- Pre-fill for demo -->
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required value="admin2025"> <!-- Pre-fill for demo -->
+                    </div>
+                    <button type="submit" class="cta-button primary full-width">Login</button>
+                    <p id="login-error" class="error-message" style="display: none;"></p>
+                </form>
+                 <p><a href="index.html">&larr; Back to Main Site</a></p>
+            </div>
+
+            <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+                <aside class="admin-sidebar">
+                    <div class="admin-logo"><span>RV Admin</span></div>
+                    <nav class="admin-nav">
+                        <ul>
+                            <li><a href="#overview" class="admin-nav-link active" data-section="overview" title="Overview"><i class="fas fa-tachometer-alt"></i> <span>Overview</span></a></li>
+                            <li><a href="#products" class="admin-nav-link" data-section="products" title="Products"><i class="fas fa-box-open"></i> <span>Products</span></a></li>
+                            <li><a href="#add-product" class="admin-nav-link" data-section="add-product" title="Add Product"><i class="fas fa-plus-circle"></i> <span>Add Product</span></a></li>
+                            <li><a href="#orders" class="admin-nav-link" data-section="orders" title="Orders"><i class="fas fa-receipt"></i> <span>Orders</span></a></li>
+                            <li><a href="#customers" class="admin-nav-link" data-section="customers" title="Customers"><i class="fas fa-users"></i> <span>Customers</span></a></li>
+                        </ul>
+                    </nav>
+                    <button id="logout-button" class="admin-logout-btn" title="Logout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></button>
+                </aside>
+                <main class="admin-main-content">
+                    <header class="admin-main-header">
+                        <h1 id="admin-section-title">Overview</h1>
+                        <!-- Add search or user profile if needed -->
+                    </header>
+
+                    <!-- Overview Section -->
+                    <section id="admin-section-overview" class="admin-section active">
+                        <h2>Dashboard Overview</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3><i class="fas fa-eye"></i> Total Visits</h3>
+                                <p id="total-visits">1,234</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3><i class="fas fa-dollar-sign"></i> Total Revenue</h3>
+                                <p id="total-revenue">UGX 5,678,900</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3><i class="fas fa-chart-line"></i> Estimated Profit</h3>
+                                <p id="estimated-profit">UGX 1,234,500</p>
+                            </div>
+                             <div class="stat-card">
+                                <h3><i class="fas fa-shopping-cart"></i> Items Sold</h3>
+                                <p id="items-sold">567</p>
+                            </div>
+                        </div>
+                        <div class="charts-grid">
+                            <div class="chart-container">
+                                <h3>Revenue Trend</h3>
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h3>Sales by Category</h3>
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Products Section -->
+                     <section id="admin-section-products" class="admin-section">
+                        <h2>Manage Products</h2>
+                        <div class="admin-product-list-controls">
+                            <input type="text" id="admin-search-product" placeholder="Search products by name...">
+                            <select id="admin-filter-category">
+                                <option value="">All Categories</option>
+                                <!-- Options added by JS -->
+                            </select>
+                             <button class="cta-button secondary" id="admin-add-new-product-btn"><i class="fas fa-plus"></i> Add New</button>
+                        </div>
+                        <div id="admin-item-list" class="admin-product-table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price (UGX)</th>
+                                        <th>Stock Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-item-tbody">
+                                    <!-- Items will be listed here by admin.js -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Add/Edit Product Section -->
+                    <section id="admin-section-add-product" class="admin-section">
+                        <h2 id="add-edit-product-title">Add New Item</h2>
+                        <form id="add-item-form" class="admin-form">
+                             <input type="hidden" id="editing-item-id"> <!-- Hidden field for editing ID -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="item-name">Item Name:</label>
+                                    <input type="text" id="item-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-category">Category:</label>
+                                    <select id="item-category" required>
+                                        <option value="">-- Select Category --</option>
+                                        <option value="women">Women</option>
+                                        <option value="men">Men</option>
+                                        <option value="kids">Kids</option>
+                                        <option value="beauty">Beauty</option>
+                                        <option value="home">Home</option>
+                                        <option value="accessories">Accessories</option>
+                                    </select>
+                                </div>
+                            </div>
+                             <div class="form-row">
+                                <div class="form-group">
+                                    <label for="item-price">Price (UGX):</label>
+                                    <input type="number" id="item-price" required min="0" step="100">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="item-discount-price">Discount Price (UGX, Optional):</label>
+                                    <input type="number" id="item-discount-price" min="0" step="100">
+                                </div>
+                             </div>
+                             <div class="form-row">
+                                <div class="form-group">
+                                    <label for="item-image">Image URL:</label>
+                                    <input type="url" id="item-image" placeholder="https://example.com/image.jpg" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="item-stock">In Stock:</label>
+                                    <select id="item-stock" required>
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+                             </div>
+                            <div class="form-group">
+                                <label for="item-description">Description:</label>
+                                <textarea id="item-description" rows="4"></textarea>
+                            </div>
+                             <div class="form-group">
+                                <label for="item-tags">Tags (comma-separated):</label>
+                                <input type="text" id="item-tags" placeholder="e.g., new, trending, dress, summer">
+                            </div>
+                             <div class="form-row">
+                                 <div class="form-group">
+                                     <label for="item-rating">Rating (Optional, 1-5):</label>
+                                     <input type="number" id="item-rating" min="1" max="5" step="0.1">
+                                 </div>
+                                 <div class="form-group">
+                                     <label for="item-review-count">Review Count (Optional):</label>
+                                     <input type="number" id="item-review-count" min="0">
+                                 </div>
+                             </div>
+                             <div class="form-actions">
+                                <button type="submit" class="cta-button primary" id="save-item-btn">Save Item</button>
+                                <button type="button" class="cta-button secondary" id="cancel-edit-btn" style="display: none;">Cancel Edit</button>
+                                <p id="add-item-status" class="status-message"></p>
+                             </div>
+                        </form>
+                    </section>
+
+                     <!-- Orders Section -->
+                    <section id="admin-section-orders" class="admin-section">
+                        <h2>Orders</h2>
+                        <div class="placeholder-content">Order management functionality requires a server backend. Displaying sample data.</div>
+                        <table class="admin-simple-table">
+                             <thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total (UGX)</th><th>Status</th></tr></thead>
+                             <tbody>
+                                 <tr><td>RV-12345</td><td>Customer A</td><td>2024-07-28</td><td>150,000</td><td><span class="status-badge processing">Processing</span></td></tr>
+                                 <tr><td>RV-12344</td><td>Customer B</td><td>2024-07-27</td><td>85,000</td><td><span class="status-badge shipped">Shipped</span></td></tr>
+                                 <tr><td>RV-12343</td><td>Customer C</td><td>2024-07-26</td><td>210,000</td><td><span class="status-badge delivered">Delivered</span></td></tr>
+                             </tbody>
+                        </table>
+                    </section>
+
+                     <!-- Customers Section -->
+                    <section id="admin-section-customers" class="admin-section">
+                        <h2>Customers</h2>
+                         <div class="placeholder-content">Customer management functionality requires a server backend. Displaying sample data.</div>
+                         <table class="admin-simple-table">
+                              <thead><tr><th>Name</th><th>Email</th><th>Orders</th><th>Joined</th></tr></thead>
+                              <tbody>
+                                  <tr><td>Customer A</td><td>customer.a@example.com</td><td>5</td><td>2024-01-15</td></tr>
+                                  <tr><td>Customer B</td><td>customer.b@example.com</td><td>2</td><td>2024-03-10</td></tr>
+                                  <tr><td>Customer C</td><td>customer.c@example.com</td><td>8</td><td>2023-11-01</td></tr>
+                              </tbody>
+                         </table>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+
+        <script src="products.js"></script>
+        <script src="admin.js"></script>
+    </body>
+    </html>

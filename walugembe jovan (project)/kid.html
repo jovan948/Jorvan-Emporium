@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Shopping Cart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%);
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 3px solid #f59e0b;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-bottom: 0.25rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-subtitle {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .fun-badge {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(236, 72, 153, 0.3);
+        }
+
+        .heart {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        /* Products Section */
+        .products-section {
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Product Card Styles */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            border-color: #f59e0b;
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+        }
+
+        .stock-badge {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .in-stock {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+        }
+
+        .out-of-stock {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+        }
+
+        .category-badge {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-attributes {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .attribute-badge {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid #fbbf24;
+        }
+
+        .rating-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            margin-right: 0.5rem;
+        }
+
+        .star-icon {
+            width: 18px;
+            height: 18px;
+            color: #d1d5db;
+        }
+
+        .star-icon.filled {
+            color: #fbbf24;
+        }
+
+        .rating-text {
+            font-size: 0.875rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f59e0b;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: #666;
+            text-decoration: line-through;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .buy-button.in-stock {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+        }
+
+        .buy-button.in-stock:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .buy-button.out-of-stock {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .cart-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="header-icon">
+                    <svg class="cart-icon" fill="white" stroke="white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="header-title">Kids Shopping Cart</h1>
+                    <p class="header-subtitle">Fun toys and games for amazing kids!</p>
+                </div>
+            </div>
+            <div class="fun-badge">
+                <span class="heart">❤️</span>
+                <span>Super Fun!</span>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="products-section">
+            <h2 class="section-title">🎉 All Kids Products 🎉</h2>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Kids Product data
+        const products = [
+            {
+                id: 1,
+                name: "Super Hero Action Figure",
+                price: 25000,
+                originalPrice: 35000,
+                image: "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=500&h=600&fit=crop",
+                category: "Action Figures",
+                age: "6-12 years",
+                color: "Multicolor",
+                inStock: true,
+                rating: 4.8
+            },
+            {
+                id: 2,
+                name: "Educational Building Blocks",
+                price: 45000,
+                image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&h=600&fit=crop",
+                category: "Educational",
+                age: "3-8 years",
+                color: "Rainbow",
+                inStock: true,
+                rating: 4.9
+            },
+            {
+                id: 3,
+                name: "Cute Teddy Bear",
+                price: 30000,
+                originalPrice: 40000,
+                image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=600&fit=crop",
+                category: "Plush Toys",
+                age: "0-10 years",
+                color: "Brown",
+                inStock: true,
+                rating: 4.7
+            },
+            {
+                id: 4,
+                name: "Racing Car Playset",
+                price: 85000,
+                image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=600&fit=crop",
+                category: "Vehicles",
+                age: "4-10 years",
+                color: "Red & Blue",
+                inStock: false,
+                rating: 4.6
+            },
+            {
+                id: 5,
+                name: "Princess Dress-Up Kit",
+                price: 55000,
+                originalPrice: 75000,
+                image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=600&fit=crop",
+                category: "Dress-Up",
+                age: "3-8 years",
+                color: "Pink & Purple",
+                inStock: true,
+                rating: 4.8
+            },
+            {
+                id: 6,
+                name: "Art & Craft Supplies Set",
+                price: 35000,
+                image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=500&h=600&fit=crop",
+                category: "Arts & Crafts",
+                age: "5-12 years",
+                color: "Assorted",
+                inStock: true,
+                rating: 4.5
+            },
+            {
+                id: 7,
+                name: "Musical Keyboard Toy",
+                price: 65000,
+                originalPrice: 85000,
+                image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=600&fit=crop",
+                category: "Musical",
+                age: "3-10 years",
+                color: "Black & White",
+                inStock: true,
+                rating: 4.7
+            },
+            {
+                id: 8,
+                name: "Puzzle Adventure Game",
+                price: 20000,
+                image: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=500&h=600&fit=crop",
+                category: "Puzzles",
+                age: "6-14 years",
+                color: "Colorful",
+                inStock: true,
+                rating: 4.4
+            },
+            {
+                id: 9,
+                name: "Remote Control Helicopter",
+                price: 95000,
+                originalPrice: 120000,
+                image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&h=600&fit=crop",
+                category: "RC Toys",
+                age: "8-16 years",
+                color: "Blue",
+                inStock: true,
+                rating: 4.9
+            },
+            {
+                id: 10,
+                name: "Baby Doll with Accessories",
+                price: 40000,
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=600&fit=crop",
+                category: "Dolls",
+                age: "2-8 years",
+                color: "Pink",
+                inStock: true,
+                rating: 4.6
+            },
+            {
+                id: 11,
+                name: "Soccer Ball & Goal Set",
+                price: 50000,
+                originalPrice: 70000,
+                image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=600&fit=crop",
+                category: "Sports",
+                age: "5-15 years",
+                color: "Black & White",
+                inStock: true,
+                rating: 4.5
+            },
+            {
+                id: 12,
+                name: "Science Experiment Kit",
+                price: 75000,
+                image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=600&fit=crop",
+                category: "Educational",
+                age: "8-16 years",
+                color: "Multi",
+                inStock: false,
+                rating: 4.8
+            }
+        ];
+
+        // Helper functions
+        function formatPrice(price) {
+            return `UGX ${price.toLocaleString()}`;
+        }
+
+        function renderStars(rating) {
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                const filled = i <= Math.floor(rating) ? 'filled' : '';
+                starsHtml += `<span class="star-icon ${filled}">⭐</span>`;
+            }
+            return starsHtml;
+        }
+
+        function calculateDiscount(originalPrice, currentPrice) {
+            return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
+        }
+
+        function createProductCard(product) {
+            const discountBadge = product.originalPrice 
+                ? `<div class="discount-badge">${calculateDiscount(product.originalPrice, product.price)}% OFF</div>`
+                : '';
+
+            const stockClass = product.inStock ? 'in-stock' : 'out-of-stock';
+            const stockText = product.inStock ? '✅ In Stock' : '❌ Out of Stock';
+
+            const originalPriceHtml = product.originalPrice 
+                ? `<span class="original-price">${formatPrice(product.originalPrice)}</span>`
+                : '';
+
+            const buttonClass = product.inStock ? 'in-stock' : 'out-of-stock';
+            const buttonText = product.inStock ? '🛒 Add to Cart' : '❌ Out of Stock';
+
+            return `
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        ${discountBadge}
+                        <div class="stock-badge ${stockClass}">${stockText}</div>
+                    </div>
+                    <div class="product-details">
+                        <div class="category-badge">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-attributes">
+                            <span class="attribute-badge">Age: ${product.age}</span>
+                            <span class="attribute-badge">${product.color}</span>
+                        </div>
+                        <div class="rating-container">
+                            <div class="stars">${renderStars(product.rating)}</div>
+                            <span class="rating-text">${product.rating}/5</span>
+                        </div>
+                        <div class="price-container">
+                            <span class="current-price">${formatPrice(product.price)}</span>
+                            ${originalPriceHtml}
+                        </div>
+                        <button class="buy-button ${buttonClass}" ${!product.inStock ? 'disabled' : ''}>
+                            ${buttonText}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render products
+        function renderProducts() {
+            const productsGrid = document.getElementById('products-grid');
+            const productsHtml = products.map(product => createProductCard(product)).join('');
+            productsGrid.innerHTML = productsHtml;
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+
+            // Add click handlers for buy buttons
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.buy-button.in-stock')) {
+                    const button = e.target.closest('.buy-button');
+                    const productCard = button.closest('.product-card');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    
+                    // Fun animation feedback
+                    button.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        button.style.transform = 'scale(1)';
+                    }, 150);
+                    
+                    alert(`🎉 Added "${productName}" to your cart! Keep shopping for more fun! 🛒`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

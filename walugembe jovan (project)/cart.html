@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Shopping Cart - Radiance Vault</title>
+         <link rel="stylesheet" href="style.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+     </head>
+     <body>
+         <header class="site-header cart-header-simple">
+             <div class="content-container">
+                 <div class="logo"> <h1><a href="/">Radiance Vault</a></h1> </div>
+                 <div class="cart-header-steps">
+                     <span class="step active"><i class="fas fa-shopping-cart"></i> Cart</span>
+                     <span class="step-separator">&rarr;</span>
+                     <span class="step"><i class="fas fa-truck"></i> Delivery & Payment</span>
+                      <span class="step-separator">&rarr;</span>
+                     <span class="step"><i class="fas fa-check-circle"></i> Confirmation</span>
+                 </div>
+                 <a href="index.html" class="continue-shopping-link"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+             </div>
+         </header>
+
+         <main class="cart-page-container content-container">
+             <div id="cart-review-step" class="cart-step active">
+                 <h1>Shopping Cart</h1>
+                 <div class="cart-layout">
+                     <div class="cart-items-section">
+                         <div id="cart-items-table"> <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading Cart...</div> </div>
+                     </div>
+                     <div class="cart-summary-section">
+                         <h2>Order Summary</h2>
+                         <div class="summary-box">
+                             <div class="summary-row">
+                                 <span>Subtotal (<span id="summary-item-count">0</span> items):</span>
+                                 <span id="summary-subtotal">UGX 0</span>
+                             </div>
+                             <button id="proceed-to-delivery-btn" class="cta-button primary full-width" disabled>Proceed to Delivery</button>
+                         </div>
+                     </div>
+                 </div>
+                 <div id="empty-cart-message-page" class="empty-cart-page" style="display: none;">
+                     <i class="fas fa-shopping-bag"></i>
+                     <h2>Your Cart is Empty</h2>
+                     <p>Looks like you haven't added anything yet.</p>
+                     <a href="/" class="cta-button primary">Start Shopping</a>
+                 </div>
+             </div>
+             <div id="delivery-payment-step" class="cart-step">
+                 <h1>Delivery & Payment</h1>
+                 <div class="checkout-layout">
+                     <div class="checkout-section delivery-details">
+                         <h2><i class="fas fa-map-marker-alt"></i> Delivery Information</h2>
+                         <form id="delivery-form">
+                             <div class="form-group"> <label for="delivery-name">Full Name</label> <input type="text" id="delivery-name" required> </div>
+                             <div class="form-group"> <label for="delivery-phone">Phone Number</label> <input type="tel" id="delivery-phone" required placeholder="e.g., 07XXXXXXXX"> </div>
+                             <div class="form-group"> <label for="delivery-location">Delivery Location (Uganda)</label> <select id="delivery-location" required> <option value="">-- Select Location --</option> </select> </div>
+                             <div class="form-group"> <label for="delivery-address">Detailed Address / Pickup Point</label> <textarea id="delivery-address" rows="3" placeholder="e.g., Plot 123, Main St, Kololo or Shell Jinja Road Pickup Point"></textarea> </div>
+                         </form>
+                         <div class="summary-row delivery-cost"> <span>Estimated Delivery Fee:</span> <span id="summary-delivery-cost">UGX 0</span> </div>
+                     </div>
+
+                     <div class="checkout-section payment-method">
+                         <h2><i class="fas fa-credit-card"></i> Payment Method</h2>
+                         <div class="payment-options">
+                             <div class="payment-option">
+                                 <input type="radio" id="pay-momo" name="payment-method" value="momo" checked>
+                                 <label for="pay-momo">
+                                     <img src="img/mtn_momo.png" alt="MTN" class="payment-icon">
+                                     <img src="img/airtel_money.png" alt="Airtel" class="payment-icon">
+                                     <span>Mobile Money</span>
+                                 </label>
+                                 <div class="payment-details momo-details">
+                                     <p><strong>Instructions:</strong></p>
+                                     <ol>
+                                         <li>Ensure sufficient funds.</li>
+                                         <li>Click "Place Order". You may receive a PIN prompt on your phone.</li>
+                                         <li>Alternatively, dial *165# (MTN) or *185# (Airtel), select Pay Bill/Merchant, use Business No <strong>123456</strong> & Amount <strong class="momo-amount">UGX 0</strong>. Ref: your phone no.</li>
+                                     </ol>
+                                     <p class="payment-warning">Do NOT share your PIN.</p>
+                                 </div>
+                             </div>
+                             <div class="payment-option">
+                                 <input type="radio" id="pay-card" name="payment-method" value="card">
+                                 <label for="pay-card">
+                                      <img src="img/visa.png" alt="Visa" class="payment-icon">
+                                      <img src="img/mastercard.png" alt="Mastercard" class="payment-icon">
+                                     <span>Debit/Credit Card</span>
+                                 </label>
+                                  <div class="payment-details card-details">
+                                     <p class="payment-warning"><strong>Visual demo ONLY. Do NOT enter real card details.</strong></p>
+                                     <div class="form-group"> <label for="card-number">Card Number</label> <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" inputmode="numeric"> </div>
+                                     <div class="form-row">
+                                         <div class="form-group"> <label for="card-expiry">Expiry (MM/YY)</label> <input type="text" id="card-expiry" placeholder="MM / YY" inputmode="numeric"> </div>
+                                         <div class="form-group"> <label for="card-cvv">CVV</label> <input type="text" id="card-cvv" placeholder="XXX" inputmode="numeric"> </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="payment-option">
+                                 <input type="radio" id="pay-paypal" name="payment-method" value="paypal">
+                                 <label for="pay-paypal">
+                                      <img src="img/paypal.png" alt="PayPal" class="payment-icon paypal-icon">
+                                     <span>PayPal</span>
+                                 </label>
+                                  <div class="payment-details paypal-details">
+                                     <button type="button" id="paypal-button" class="paypal-button-sim"><i class="fab fa-paypal"></i> Pay with PayPal</button>
+                                     <p>Clicking simulates the PayPal process.</p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="checkout-section final-summary">
+                         <h2><i class="fas fa-receipt"></i> Final Summary</h2>
+                          <div class="summary-box">
+                             <div class="summary-row"> <span>Subtotal (<span id="final-summary-item-count">0</span> items):</span> <span id="final-summary-subtotal">UGX 0</span> </div>
+                              <div class="summary-row"> <span>Delivery Fee:</span> <span id="final-summary-delivery">UGX 0</span> </div>
+                             <div class="summary-row total-row"> <span>Total Amount:</span> <span id="final-summary-total">UGX 0</span> </div>
+                             <button id="place-order-btn" class="cta-button primary full-width" disabled>Place Order</button>
+                             <p class="secure-checkout-note"><i class="fas fa-lock"></i> Secure Checkout</p>
+                         </div>
+                     </div>
+                 </div>
+                 <button id="back-to-cart-btn" class="cta-button secondary"><i class="fas fa-arrow-left"></i> Back to Cart</button>
+             </div>
+             <div id="confirmation-step" class="cart-step">
+                 <div class="confirmation-message">
+                     <i class="fas fa-check-circle"></i>
+                     <h2>Thank You For Your Order!</h2>
+                     <p>Your order has been placed successfully.</p>
+                     <p>Order Number: <strong id="confirm-order-number">RV-XXXXXX</strong></p>
+                     <p>A confirmation email has been sent.</p>
+                     <a href="/" class="cta-button primary">Continue Shopping</a>
+                 </div>
+             </div>
+
+         </main>
+
+         <footer class="site-footer minimal-footer"> <div class="content-container"> &copy; 2024 Radiance Vault. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a> </div> </footer>
+         <script src="products.js"></script>
+         <script src="cart.js"></script>
+     </body>
+     </html>

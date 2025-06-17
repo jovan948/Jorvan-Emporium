@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Terms of Service - Radiance Vault</title><link rel="stylesheet" href="style.css"> <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>"></head><body><header class="site-header minimal-header"><div class="content-container"><h1><a href="/">Radiance Vault</a></h1></div></header><main class="static-page-container content-container"><h1>Terms of Service</h1><p><em>Last Updated: [Current Date Placeholder]</em></p><p>Please read these Terms of Service ("Terms") carefully before using the Radiance Vault website (the "Service") operated by Radiance Vault ("us", "we", or "our").</p><p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the Service.</p><p>By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you do not have permission to access the Service.</p><h2>1. Use of Service</h2><p>You agree to use Radiance Vault only for lawful purposes and in accordance with these Terms. You must be at least 18 years old or access the service under the supervision of a parent or guardian.</p><h2>2. Accounts</h2><p>You are responsible for maintaining the confidentiality of your account login information and for all activities that occur under your account. You must provide accurate and complete information during registration and keep it updated.</p><h2>3. Orders and Payment</h2><p>Placing an order constitutes an offer to purchase products under these Terms. All orders are subject to acceptance by us. We reserve the right to refuse or cancel orders for reasons including, but not limited to, product unavailability, errors in pricing or description, or suspicion of fraud.</p><p>You agree to provide current, complete, and accurate purchase and account information. Payment must be made through one of our accepted methods at the time of order.</p><h2>4. Pricing and Availability</h2><p>Prices are listed in Ugandan Shillings (UGX) and are subject to change without notice. We strive for accuracy but errors may occur. If we discover a pricing error in your order, we will contact you. Product availability is not guaranteed.</p><h2>5. Shipping and Delivery</h2><p>Shipping is handled according to our <a href="shipping.html">Shipping Information</a> page. Risk of loss passes to you upon delivery to the carrier.</p><h2>6. Returns and Refunds</h2><p>Returns are governed by our <a href="returns.html">Return Policy</a>.</p><h2>7. Intellectual Property</h2><p>All content on Radiance Vault (text, graphics, logos, images, software) is the property of Radiance Vault or its licensors and is protected by copyright and other intellectual property laws.</p><h2>8. Limitation of Liability</h2><p>To the fullest extent permitted by law, Radiance Vault shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the service.</p><h2>9. Governing Law</h2><p>These Terms shall be governed by the laws of Uganda, without regard to its conflict of law provisions.</p><h2>10. Changes to Terms</h2><p>We reserve the right to modify these Terms at any time. We will notify you of significant changes by posting the new Terms on the site. Your continued use of the service after changes constitutes acceptance.</p><h2>11. Contact</h2><p>For questions about these Terms, please <a href="contact.html">Contact Us</a>.</p><p style="text-align: center; margin-top: 30px;"><a href="/" class="cta-button primary">Back to Shopping</a></p></main><footer class="site-footer minimal-footer"><div class="content-container">&copy; 2024 Radiance Vault. All rights reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></div></footer></body></html>
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Radiance Vault - Fashion, Electronics & More</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+      </head>
+      <body>
+        <header class="site-header">
+          <a href="admin.html"><button>Admin page</button></a>
+          <div class="top-bar">
+            <div class="content-container">
+                <span><i class="fas fa-truck"></i> Fast Delivery Across Uganda!</span> |
+                <a href="admin.html">Admin Panel</a>
+            </div>
+          </div>
+          <div class="main-header-container">
+            <div class="main-header content-container">
+              <button id="mobile-menu-toggle" class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+              <div class="logo">
+                <h1><a href="/">Jorvan Emporium</a></h1>
+              </div>
+              <div class="search-bar-container">
+                 <div class="search-bar">
+                   <input type="text" id="search-input" placeholder="Search products, brands...">
+                   <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
+                 </div>
+              </div>
+              <div class="header-actions">
+                <div class="user-actions" id="user-actions-area">
+                   <a href="#" id="login-trigger" class="user-action-link">
+                       <i class="far fa-user-circle"></i>
+                       <span>Account</span>
+                   </a>
+                   <div id="user-logged-in" class="user-logged-in-state" style="display: none;">
+                      <i class="fas fa-user-circle user-icon-loggedin"></i>
+                      <div class="user-dropdown">
+                          <span class="welcome-user">Hi, User!</span>
+                          <div class="user-menu">
+                              <a href="#my-account" class="user-menu-link">My Account</a>
+                              <a href="cart.html" class="user-menu-link">My Orders</a> <!-- Link to cart page as requested -->
+                              <a href="#" id="logout-button" class="user-menu-link logout-link">Logout</a>
+                          </div>
+                      </div>
+                   </div>
+                </div>
+                <a href="#" id="wishlist-link" class="user-action-link icon-link" title="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span class="icon-count wishlist-count">0</span>
+                </a>
+                <a href="cart.html" id="cart-icon-link" class="user-action-link icon-link" title="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="icon-count cart-count">0</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <nav class="main-nav" id="main-navigation">
+             <div class="mobile-menu-header">
+                 <span>Menu</span>
+                 <button id="mobile-menu-close" class="mobile-menu-close-btn"><i class="fas fa-times"></i></button>
+             </div>
+            <ul class="content-container">
+              <li><a href="#" class="nav-link main-category-link" data-category="women"><i class="fas fa-female"></i> Women</a></li>
+              <li><a href="#" class="nav-link main-category-link" data-category="men"><i class="fas fa-male"></i> Men</a></li>
+              <li><a href="#" class="nav-link main-category-link" data-category="kids"><i class="fas fa-child"></i> Kids</a></li>
+              <li><a href="#" class="nav-link main-category-link" data-category="beauty"><i class="fas fa-spa"></i> Beauty</a></li>
+              <li><a href="#" class="nav-link main-category-link" data-category="home"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="#" class="nav-link main-category-link" data-category="accessories"><i class="fas fa-gem"></i> Accessories</a></li>
+              <li><a href="#" class="nav-link main-category-link sale-link" data-category="sale"><i class="fas fa-tag"></i> Sale</a></li>
+            </ul>
+          </nav>
+           <nav class="sub-nav">
+             <ul class="content-container">
+               <li><a href="#" class="nav-link sub-category-link" data-tag="new">New Arrivals</a></li>
+               <li><a href="#" class="nav-link sub-category-link" data-tag="trending">Trending</a></li>
+               <li><a href="#" class="nav-link sub-category-link" data-tag="dresses">Dresses</a></li>
+               <li><a href="#" class="nav-link sub-category-link" data-tag="tops">Tops</a></li>
+               <li><a href="#" class="nav-link sub-category-link" data-tag="shoes">Shoes</a></li>
+               <li><a href="#" class="nav-link sub-category-link" data-tag="plus-size">Plus Size</a></li>
+               <li><a href="#" class="nav-link sub-category-link" data-tag="flash-sale">Flash Sale</a></li>
+             </ul>
+           </nav>
+        </header>
+
+        <main class="main-content-area content-container">
+          <section id="hero-banner" class="content-section hero-section">
+            <div class="hero-slide active">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Shopping Banner">
+              <div class="hero-text">
+                <h2>Summer Escapes</h2>
+                <p>Up to 50% off seasonal styles.</p>
+                <a href="#" class="cta-button primary main-category-link" data-category="sale">Shop Now <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </section>
+
+          <section id="product-display-section" class="content-section product-section">
+            <h2 id="product-display-title">Featured Products</h2>
+            
+            <div class="product-grid" id="product-display-area">
+              <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+              
+            </div>
+             <div id="no-results-message" class="no-results" style="display: none;">
+                <i class="fas fa-box-open"></i>
+                <p>No products found matching your criteria.</p>
+                <button id="clear-filters-btn" class="cta-button secondary">Clear Filters</button>
+            </div>
+          </section>
+
+           <section id="style-gallery" class="content-section gallery-section">
+             <h2>#RadianceVault Style</h2>
+             <div class="gallery-grid">
+               <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=250&q=60" alt="User style 1">
+               <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=250&q=60" alt="User style 2">
+               <img src="https://images.unsplash.com/photo-1551489186-cf8726f514f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhc2hpb24lMjBtb2RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=250&q=60" alt="User style 4">
+                <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=250&q=60" alt="User style 3">
+             </div>
+           </section>
+
+           <section id="newsletter-signup" class="content-section newsletter-section">
+              <h2><i class="fas fa-envelope-open-text"></i> Stay In The Know</h2>
+              <p>Sign up for exclusive offers, style updates, and more.</p>
+              <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="cta-button primary">Subscribe</button>
+              </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+           <div class="footer-main content-container">
+             <div class="footer-section"> <h4>Company Info</h4> <ul> <li><a href="about.html">About Us</a></li> <li><a href="careers.html">Careers</a></li> <li><a href="social-responsibility.html">Social Responsibility</a></li> <li><a href="designer-program.html">Designer Program</a></li> </ul> </div>
+             <div class="footer-section"> <h4>Help & Support</h4> <ul> <li><a href="shipping.html">Shipping Info</a></li> <li><a href="returns.html">Returns</a></li> <li><a href="#order-tracking">Track Order</a></li> <li><a href="size-guide.html">Size Guide</a></li> <li><a href="contact.html">Contact Us</a></li> <li><a href="faq.html">FAQ</a></li> </ul> </div>
+             <div class="footer-section"> <h4>Customer Care</h4> <ul> <li><a href="payment-methods.html">Payment Methods</a></li> <li><a href="#bonus-points">Bonus Points</a></li> <li><a href="#gift-cards">Gift Cards</a></li> <li><a href="#student-discount">Student Discount</a></li> </ul> </div>
+             <div class="footer-section"> <h4>Connect With Us</h4> <div class="social-icons"> <a href="#" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="TikTok" title="TikTok"><i class="fab fa-tiktok"></i></a> <a href="#" aria-label="Pinterest" title="Pinterest"><i class="fab fa-pinterest"></i></a> <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a> </div> <h4>Download Our App</h4> <div class="app-links"> <a href="#"><img src="https://via.placeholder.com/120x40/000000/FFFFFF?text=App+Store" alt="App Store"></a> <a href="#"><img src="https://via.placeholder.com/120x40/000000/FFFFFF?text=Google+Play" alt="Google Play"></a> </div> </div>
+           </div>
+           <div class="footer-bottom"> <div class="content-container"> <p>&copy; 2024 Radiance Vault. All rights reserved.</p> <ul> <li><a href="privacy.html">Privacy Policy</a></li> <li><a href="terms.html">Terms of Service</a></li> <li><a href="#cookies">Cookie Preferences</a></li> </ul> </div> </div>
+        </footer>
+        <div id="quick-view-modal" class="modal quick-view-modal"> <div class="modal-content"> <button class="close-modal-btn" id="close-quick-view"><i class="fas fa-times"></i></button> <div id="quick-view-content"></div> </div> </div>
+
+        <div id="auth-modal" class="modal auth-modal"> <div class="modal-content"> <button class="close-modal-btn" id="close-auth-modal"><i class="fas fa-times"></i></button> <div class="auth-tabs"> <button class="auth-tab-link active" data-tab="login">Login</button> <button class="auth-tab-link" data-tab="signup">Sign Up</button> </div> <div id="login-tab" class="auth-tab-content active"> <h2>Welcome Back!</h2> <form id="login-form"> <div class="form-group"> <label for="login-email">Email or Phone Number</label> <input type="text" id="login-email" required> </div> <div class="form-group"> <label for="login-password">Password</label> <input type="password" id="login-password" required> </div> <p id="login-error-msg" class="error-message" style="display: none;"></p> <button type="submit" class="cta-button primary auth-button">Login</button> <p class="auth-switch">Don't have an account? <a href="#" class="switch-to-signup">Sign Up</a></p> </form> </div> <div id="signup-tab" class="auth-tab-content"> <h2>Create Account</h2> <form id="signup-form"> <div class="form-group"> <label for="signup-name">Full Name</label> <input type="text" id="signup-name" required> </div> <div class="form-group"> <label for="signup-email">Email</label> <input type="email" id="signup-email" required> </div> <div class="form-group"> <label for="signup-phone">Phone Number (Optional)</label> <input type="tel" id="signup-phone"> </div> <div class="form-group"> <label for="signup-password">Password</label> <input type="password" id="signup-password" required> </div> <p id="signup-error-msg" class="error-message" style="display: none;"></p> <p id="signup-success-msg" class="success-message" style="display: none;"></p> <button type="submit" class="cta-button primary auth-button">Sign Up</button> <p class="auth-switch">Already have an account? <a href="#" class="switch-to-login">Login</a></p> </form> </div> </div> </div>
+
+        <div id="modal-overlay" class="modal-overlay"></div>
+        <div id="toast-container"></div>
+
+        <script src="products.js"></script>
+        <script src="script.js"></script>
+      
+      </body>
+    </html>

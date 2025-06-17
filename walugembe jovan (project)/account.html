@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jovan Shop | Login & Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to top left, #f9f9f9, #f0f4f8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .app-container {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      width: 380px;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      animation: fadeSlide 1s ease;
+    }
+
+    @keyframes fadeSlide {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .icon {
+      font-size: 55px;
+      color: #ff6b6b;
+      margin-bottom: 15px;
+      animation: bounce 1.2s infinite alternate ease-in-out;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-6px); }
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+      text-align: left;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid #cbd5e0;
+      border-radius: 12px;
+      font-size: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #ff6b6b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+    }
+
+    .btn, .site-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+    }
+
+    .btn {
+      background: #ff6b6b;
+      color: white;
+    }
+
+    .btn:hover {
+      background: #e25555;
+    }
+
+    .site-btn {
+      background: linear-gradient(45deg, #7f9cf5, #667eea);
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .site-btn:hover {
+      background: linear-gradient(45deg, #5a67d8, #4c51bf);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .switch-form {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #4a5568;
+    }
+
+    .switch-form a {
+      color: #ff6b6b;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    #welcome-msg {
+      display: none;
+      color: #38a169;
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 30px;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @media (max-width: 420px) {
+      .app-container {
+        width: 92%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container" id="form-container">
+    <div class="icon">🛍️</div>
+    <h2 id="form-title">Sign In</h2>
+    <form id="user-form" onsubmit="handleSubmit(event)">
+      <div id="form-fields">
+        <div class="input-group">
+          <input type="text" placeholder="Full Name (e.g. Jovan)" required>
+        </div>
+        <div class="input-group">
+          <input type="email" placeholder="Email (e.g. jovan@gmail.com)" required>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Password" required>
+        </div>
+      </div>
+      <button type="submit" class="btn">Sign In</button>
+    </form>
+    <div class="switch-form" id="switch">
+      Already have an account? <a onclick="toggleForm()">Login</a>
+    </div>
+    <div id="welcome-msg">🎉 Welcome to Jovan's Shopping App!</div>
+    <a href="index.html" class="site-btn">⬅ Go to Site</a>
+  </div>
+
+  <script>
+    let isSignIn = true;
+
+    function toggleForm() {
+      const title = document.getElementById('form-title');
+      const formFields = document.getElementById('form-fields');
+      const switchMsg = document.getElementById('switch');
+      const btn = document.querySelector('.btn');
+
+      if (isSignIn) {
+        title.textContent = 'Login';
+        formFields.innerHTML = `
+          <div class="input-group">
+            <input type="email" placeholder="Email (e.g. jovan@gmail.com)" required>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Password" required>
+          </div>
+        `;
+        switchMsg.innerHTML = `Don't have an account? <a onclick="toggleForm()">Sign In</a>`;
+        btn.textContent = 'Login';
+      } else {
+        title.textContent = 'Sign In';
+        formFields.innerHTML = `
+          <div class="input-group">
+            <input type="text" placeholder="Full Name (e.g. Jovan)" required>
+          </div>
+          <div class="input-group">
+            <input type="email" placeholder="Email (e.g. jovan@gmail.com)" required>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Password" required>
+          </div>
+        `;
+        switchMsg.innerHTML = `Already have an account? <a onclick="toggleForm()">Login</a>`;
+        btn.textContent = 'Sign In';
+      }
+      isSignIn = !isSignIn;
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('user-form').style.display = 'none';
+      document.getElementById('switch').style.display = 'none';
+      document.getElementById('form-title').style.display = 'none';
+      document.getElementById('welcome-msg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

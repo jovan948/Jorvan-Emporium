@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ugandan-beauty-stars</title>
+    <meta name="description" content="Lovable Generated Project" />
+    <meta name="author" content="Lovable" />
+
+    <meta property="og:title" content="ugandan-beauty-stars" />
+    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #f3e8ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #fce7f3;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ec4899, #9333ea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ec4899, #9333ea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 10px 15px 10px 40px;
+            border: 2px solid #fce7f3;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s;
+            width: 250px;
+        }
+
+        .search-input:focus {
+            border-color: #ec4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .cart {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            background: #ec4899;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ec4899, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #fce7f3;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 12px 25px;
+            border: 2px solid #fce7f3;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #ec4899, #9333ea);
+            color: white;
+            border-color: transparent;
+        }
+
+        .category-btn:hover {
+            background: #fdf2f8;
+        }
+
+        .category-btn.active:hover {
+            background: linear-gradient(135deg, #db2777, #7c3aed);
+        }
+
+        /* Products Grid */
+        .products {
+            padding: 60px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid #fce7f3;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .favorite-btn:hover {
+            background: white;
+        }
+
+        .favorite-btn.active {
+            color: #ef4444;
+        }
+
+        .stars {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 16px;
+        }
+
+        .star.empty {
+            color: #d1d5db;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+
+        .product-description {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ec4899;
+        }
+
+        .product-category {
+            background: #f3f4f6;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: capitalize;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #ec4899, #9333ea);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(135deg, #db2777, #7c3aed);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #ec4899, #9333ea);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .footer-description {
+            color: #fce7f3;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            color: #fce7f3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .search-input {
+                width: 200px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .category-buttons {
+                gap: 10px;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">💄</div>
+                    <div class="logo-text">BeautyStars Uganda</div>
+                </div>
+                <div class="search-cart">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                    </div>
+                    <div class="cart">
+                        <span>🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Discover Your Glow</h1>
+            <p>Premium beauty products curated for the modern Ugandan woman. Enhance your natural beauty with our star-rated collection.</p>
+            <div class="features">
+                <div class="feature">✨ 15 Premium Products</div>
+                <div class="feature">⭐ 5-Star Rated</div>
+                <div class="feature">🇺🇬 Made in Uganda</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="makeup">Makeup</button>
+                <button class="category-btn" data-category="skincare">Skincare</button>
+                <button class="category-btn" data-category="haircare">Hair Care</button>
+                <button class="category-btn" data-category="bodycare">Body Care</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">💄</div>
+                    <h3>BeautyStars Uganda</h3>
+                </div>
+                <p class="footer-description">
+                    Your trusted partner in beauty. We bring you the finest products to enhance your natural glow.
+                </p>
+                <div class="footer-contact">
+                    <span>📱 +256 700 123 456</span>
+                    <span>✉️ hello@beautystars.ug</span>
+                    <span>📍 Kampala, Uganda</span>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 BeautyStars Uganda. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 1,
+                name: "Ruby Red Lipstick",
+                price: 85000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500&h=500&fit=crop",
+                category: "makeup",
+                description: "Bold ruby red lipstick for confident looks"
+            },
+            {
+                id: 2,
+                name: "Matte Foundation",
+                price: 120000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&h=500&fit=crop",
+                category: "makeup",
+                description: "Long-lasting matte foundation for all skin tones"
+            },
+            {
+                id: 3,
+                name: "Waterproof Mascara",
+                price: 55000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1631214540242-0c8e801d0113?w=500&h=500&fit=crop",
+                category: "makeup",
+                description: "Long-lasting, smudge-proof mascara formula"
+            },
+            {
+                id: 4,
+                name: "Eyeshadow Palette - Sunset",
+                price: 95000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&h=500&fit=crop",
+                category: "makeup",
+                description: "12 warm shades for stunning eye looks"
+            },
+            {
+                id: 5,
+                name: "Pink Blush Compact",
+                price: 65000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&h=500&fit=crop",
+                category: "makeup",
+                description: "Natural pink blush for a healthy glow"
+            },
+            {
+                id: 6,
+                name: "Vitamin C Serum",
+                price: 85000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=500&fit=crop",
+                category: "skincare",
+                description: "Brightening serum with natural vitamin C"
+            },
+            {
+                id: 7,
+                name: "Rose Water Toner",
+                price: 55000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&h=500&fit=crop",
+                category: "skincare",
+                description: "Refreshing toner with natural rose water"
+            },
+            {
+                id: 8,
+                name: "Nourishing Night Cream",
+                price: 110000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+                category: "skincare",
+                description: "Intensive overnight moisturizer"
+            },
+            {
+                id: 9,
+                name: "Charcoal Face Mask",
+                price: 40000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=500&h=500&fit=crop",
+                category: "skincare",
+                description: "Deep cleansing mask with activated charcoal"
+            },
+            {
+                id: 10,
+                name: "Gentle Cleansing Oil",
+                price: 80000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&h=500&fit=crop",
+                category: "skincare",
+                description: "Removes makeup while nourishing skin"
+            },
+            {
+                id: 11,
+                name: "Argan Oil Hair Serum",
+                price: 75000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=500&h=500&fit=crop",
+                category: "haircare",
+                description: "Smoothing serum with pure argan oil"
+            },
+            {
+                id: 12,
+                name: "Coconut Hair Treatment",
+                price: 35000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=500&fit=crop",
+                category: "haircare",
+                description: "Nourishing treatment for damaged hair"
+            },
+            {
+                id: 13,
+                name: "Curl Defining Cream",
+                price: 60000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&h=500&fit=crop",
+                category: "haircare",
+                description: "Perfect curls without frizz"
+            },
+            {
+                id: 14,
+                name: "Shea Butter Body Lotion",
+                price: 45000,
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=500&h=500&fit=crop",
+                category: "bodycare",
+                description: "Moisturizing lotion with pure shea butter"
+            },
+            {
+                id: 15,
+                name: "Coffee Body Scrub",
+                price: 50000,
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&h=500&fit=crop",
+                category: "bodycare",
+                description: "Exfoliating scrub with organic coffee"
+            }
+        ];
+
+        let cartItems = [];
+        let favorites = [];
+        let filteredProducts = [...products];
+
+        // DOM elements
+        const productsGrid = document.getElementById('productsGrid');
+        const cartCount = document.getElementById('cartCount');
+        const searchInput = document.getElementById('searchInput');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+
+        // Initialize
+        function init() {
+            renderProducts();
+            setupEventListeners();
+        }
+
+        // Render products
+        function renderProducts() {
+            productsGrid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productCard = createProductCard(product);
+                productsGrid.appendChild(productCard);
+            });
+        }
+
+        // Create product card
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                    <button class="favorite-btn" onclick="toggleFavorite(${product.id})">
+                        ${favorites.includes(product.id) ? '❤️' : '🤍'}
+                    </button>
+                    <div class="stars">
+                        ${renderStars(product.rating)}
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-footer">
+                        <span class="product-price">UGX ${product.price.toLocaleString()}</span>
+                        <span class="product-category">${product.category}</span>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            `;
+            return card;
+        }
+
+        // Render stars
+        function renderStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<span class="star ${i <= rating ? '' : 'empty'}">${i <= rating ? '⭐' : '☆'}</span>`;
+            }
+            return stars;
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            cartItems.push(productId);
+            updateCartCount();
+        }
+
+        // Toggle favorite
+        function toggleFavorite(productId) {
+            if (favorites.includes(productId)) {
+                favorites = favorites.filter(id => id !== productId);
+            } else {
+                favorites.push(productId);
+            }
+            renderProducts();
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            cartCount.textContent = cartItems.length;
+        }
+
+        // Filter products
+        function filterProducts(category, searchTerm = '') {
+            filteredProducts = products.filter(product => {
+                const matchesCategory = category === 'all' || product.category === category;
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    product.description.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+            renderProducts();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Category buttons
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    const category = e.target.dataset.category;
+                    filterProducts(category, searchInput.value);
+                });
+            });
+
+            // Search input
+            searchInput.addEventListener('input', (e) => {
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                filterProducts(activeCategory, e.target.value);
+            });
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
